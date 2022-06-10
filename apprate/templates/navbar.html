@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="/"><i class="fa-duotone fa-wave-pulse"></i></a>
-        <a href="#" class="navbar-brand">Project-rater</a>
+        <a href="/" class="navbar-brand">Project-rater</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,20 +9,20 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="Home" class="nav-link">Home</a>
+                    <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="sign in" class="nav-link">Sign in</a>
+                    <a href="{% url 'register' %}" class="nav-link">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a href="login" class="nav-link">login</a>
+                    <a href="{% url 'login' %}" class="nav-link">login</a>
                 </li>
             </ul>
         </div> 
     </div>
     <form class="d-flex">
         {% csrf_token %}
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search for projects" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </nav>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http  import HttpResponse,Http404
-
+from .forms import RegisterForm,LoginForm
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
 

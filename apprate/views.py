@@ -7,3 +7,9 @@ from django.http  import HttpResponse,Http404
 
 def home(request):
     return render(request,'home.html')
+
+def register(request):
+    return render(request,'register/register.html',)
+
+def login(request):
+    return render(request,'register/login.html')

@@ -42,8 +42,8 @@ class Rate(models.Model):
 
     def save_rate(self):
         self.save()
-  
-
+    
+    
 class Profile(models.Model):
     profile_picture = models.ImageField(upload_to='images/', default='default.png')
     bio = models.TextField(max_length=300, null=True, blank=True)

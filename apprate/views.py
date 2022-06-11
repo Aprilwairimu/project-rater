@@ -1,14 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 from .forms import RegisterForm,LoginForm
 from urllib import request
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+import random
+
 # Create your views here.
 
 
 
 def home(request):
-    return render(request,'home.html')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+    else:
+        form = PostForm()
+
+    try:
+        posts = Post.objects.all()
+        posts = posts[::-1]
+        a_post = random.randint(0, len(posts)-1)
+        random_post = posts[a_post]
+        print(random_post.photo)
+    except Post.DoesNotExist:
+        posts = None
+    return render(request, 'home.html', {'posts': posts, 'form': form, 'random_post': random_post})
+
+    
     
 
 def logout(request):

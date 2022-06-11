@@ -1,0 +1,93 @@
+<!-- {% extends 'base.html' %}
+{% block content %}
+<div class="container" style="margin-top:8%">
+    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }} from {{ post.user.profile.location }} <span
+            id="heart"> <i class="fas fa-heart"></i></span></h5>
+
+    <div class="card">
+        <div class="view overlay" style="background-image:url({{ post.photo.cdn_url }})">
+            <img class="card-img-top" style="visibility:hidden" width="100%"
+                src="{{ post.photo.cdn_url }}-/crop/1440x720/center/-/quality/lightest/" alt="{{photo.title}}">
+            <a href="">
+                <div class="mask rgba-black-slight">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
+                                {% for rating in post.ratings.all %}
+                                {% if forloop.counter is post.ratings.all.count %}
+                                <div id="design">{{ rating.design_average}}<br>
+                                    <span class="rates">design</span>
+                                </div>
+                                <div id="usable" class="mx-auto">{{ rating.usability_average }}<br>
+                                    <span class="rates">usability</span>
+                                </div>
+                                <div id="contente">{{ rating.content_average }}<br>
+                                    <span class="rates">content</span>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>{{post.title|title}}</strong>
+                <a href="{{ post.url }}" style="float:right" class="btn btn-sm btn-info mr-4"> Visit </a>
+            </h5>
+            <p>by <span><a href="{% url 'userprofile' post.user.username %}" id="usern" class="mr-2">{{
+                        post.user.username|title }}</a></span>({{post.user.profile.location}})
+            </p>
+            <p>{{ post.description }}</p>
+            <hr>
+            <p class="card-text "><img src="{{post.user.profile.profile_picture.url}}" class="nav-img mr-2" alt="">
+                By {{post.user.username|title}} <span style="float:right">{{post.date|date}}</span>
+            </p>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h3 class="D-block mx-auto">Ratings Scores</h3>
+                    {% for rating in post.ratings.all %}
+                    {% if forloop.counter is post.ratings.all.count %}
+                    <a class="btn btn-info btn-sm">
+                        <h5>{{ rating.score }}</h5>
+                        <span class="sc">Average Score</span>
+                    </a>
+                    <a class="btn btn-outline-success btn-sm">
+                        <h5>{{ rating.design_average }}</h5>
+                        <span class="sc">Design Average</span>
+                    </a>
+                    <a class="btn btn-outline-primary btn-sm" id="u">
+                        <h5>{{ rating.usability_average }}</h5>
+                        <span class="sc">Usability Average</span>
+                    </a>
+                    <a class="btn btn-outline-danger btn-sm" id="c">
+                        <h5>{{ rating.content_average }}</h5>
+                        <span class="sc">Content Average</span>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            {% if rating_status %}
+            <h5>You have already voted</h5>
+            {% else %}
+            {% if user.is_authenticated %}
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{rating_form|crispy}}
+                <button class="btn btn-sm btn-info">Rate</button>
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %} -->

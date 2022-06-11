@@ -43,7 +43,7 @@ def login(request):
         else:
             return HttpResponse("Form is not Valid")
     return render(request,'register/login.html',{'form':form})
-@login_required(login_url='login')
+
 def profile(request, username):
     return render(request, 'profile.html')
 

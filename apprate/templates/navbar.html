@@ -20,7 +20,7 @@
             </ul>
         </div> 
     </div>
-    <form class="d-flex">
+    <form class="d-flex"  method="get" action="{% url 'search' %}">
         {% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search for projects" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

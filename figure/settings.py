@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apprate',
+    'rest_framework',
     # 'pyuploadcare.dj',
 ]
 UPLOADCARE = {

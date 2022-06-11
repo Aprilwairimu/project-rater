@@ -43,3 +43,22 @@ def login(request):
         else:
             return HttpResponse("Form is not Valid")
     return render(request,'register/login.html',{'form':form})
+@login_required(login_url='login')
+def profile(request, username):
+    return render(request, 'profile.html')
+
+
+def search_project(request):
+    if request.method == 'GET':
+        title = request.GET.get("title")
+        results = Post.objects.filter(title__icontains=title).all()
+        print(results)
+        message = f'name'
+        params = {
+            'results': results,
+            'message': message
+        }
+        return render(request, 'searched.html', params)
+    else:
+        message = "You haven't searched for any image category"
+    return render(request, 'searched.html', {'message': message})

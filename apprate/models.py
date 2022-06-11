@@ -21,7 +21,7 @@ class Post(models.Model):
         self.delete()
 
 class Rate(models.Model):
-     rate = (
+    rate = (
         (1, '1'),
         (2, '2'),
         (3, '3'),

@@ -28,26 +28,5 @@
         <input class="form-control me-2" type="search" placeholder="Search for projects" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-
-    {% if user.is_authenticated%}
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">{{ user.username|title }} <img class="rounded-circle nav-img"
-                src="{{ user.profile.profile_picture.url }}" alt="">
-        </a>
-        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item text-center" href="{% url 'profile' user.username %}">Profile</a>
-            <hr>
-            <a class="dropdown-item text-center" href="{% url 'edit' user.username  %}"> Edit profile</a>
-            <hr>
-            <a href="{% url 'logout' %}" class="text-secondary text-center dropdown-item">Log Out</a>
     
-    
-        </div>
-    </li>
-    {% else %}
-    <a href="{% url 'login' %}" class="login btn btn-sm btn-info">login</a>
-    {% endif %}
-
-   
 </nav>

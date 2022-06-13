@@ -17,6 +17,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
+    posts=Post.objects.all()
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -26,7 +27,7 @@ def home(request):
     else:
         form = PostForm()
 
-    return render(request, 'home.html', { 'form': form,})
+    return render(request, 'home.html', { 'form': form,"posts":posts})
 
 def logout(request):
     logout(request)

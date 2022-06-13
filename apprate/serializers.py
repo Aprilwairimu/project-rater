@@ -12,7 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ['id', 'title', 'url', 'description', 'image', 'date', 'user']
+        fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):

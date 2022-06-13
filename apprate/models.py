@@ -38,7 +38,7 @@ class Rate(models.Model):
     Usability  = models.IntegerField(choices=rate,blank=True)
     content = models.IntegerField(choices=rate,blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='rater')
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings', null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='rates', null=True)
 
     def save_rate(self):
         self.save()

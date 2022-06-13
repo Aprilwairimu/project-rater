@@ -1,7 +1,7 @@
 <!-- {% extends 'base.html' %}
 {% block content %}
 <div class="container" style="margin-top:8%">
-    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }} from {{ post.user.profile.location }} <span
+    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }} <span
             id="heart"> <i class="fas fa-heart"></i></span></h5>
 
     <div class="card">
@@ -14,15 +14,15 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
-                                {% for rating in post.ratings.all %}
-                                {% if forloop.counter is post.ratings.all.count %}
-                                <div id="design">{{ rating.design_average}}<br>
+                                {% for rate in post.rates.all %}
+                                {% if forloop.counter is post.rate.all.count %}
+                                <div id="design">{{ rate.design_average}}<br>
                                     <span class="rates">design</span>
                                 </div>
-                                <div id="usable" class="mx-auto">{{ rating.usability_average }}<br>
+                                <div id="usable" class="mx-auto">{{ rate.usability_average }}<br>
                                     <span class="rates">usability</span>
                                 </div>
-                                <div id="contente">{{ rating.content_average }}<br>
+                                <div id="contente">{{ rate.content_average }}<br>
                                     <span class="rates">content</span>
                                 </div>
                                 {% endif %}
@@ -50,23 +50,23 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <h3 class="D-block mx-auto">Ratings Scores</h3>
-                    {% for rating in post.ratings.all %}
-                    {% if forloop.counter is post.ratings.all.count %}
+                    <h3 class="D-block mx-auto">Rates Scores</h3>
+                    {% for rate in post.rates.all %}
+                    {% if forloop.counter is post.rates.all.count %}
                     <a class="btn btn-info btn-sm">
                         <h5>{{ rating.score }}</h5>
                         <span class="sc">Average Score</span>
                     </a>
                     <a class="btn btn-outline-success btn-sm">
-                        <h5>{{ rating.design_average }}</h5>
+                        <h5>{{ rate.design_average }}</h5>
                         <span class="sc">Design Average</span>
                     </a>
                     <a class="btn btn-outline-primary btn-sm" id="u">
-                        <h5>{{ rating.usability_average }}</h5>
+                        <h5>{{ rate.usability_average }}</h5>
                         <span class="sc">Usability Average</span>
                     </a>
                     <a class="btn btn-outline-danger btn-sm" id="c">
-                        <h5>{{ rating.content_average }}</h5>
+                        <h5>{{ rate.content_average }}</h5>
                         <span class="sc">Content Average</span>
                     </a>
                     {% endif %}
@@ -75,13 +75,13 @@
                 <div class="col-md-2"></div>
             </div>
 
-            {% if rating_status %}
+            {% if rate_status %}
             <h5>You have already voted</h5>
             {% else %}
             {% if user.is_authenticated %}
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{rating_form}}
+                {{rate_form}}
                 <button class="btn btn-sm btn-info">Rate</button>
             </form>
             {% endif %}

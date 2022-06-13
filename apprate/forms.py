@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import models
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm,widgets
 from .models import *
 
 
@@ -22,11 +22,10 @@ class LoginForm(forms.Form):
 
 class PostForm(forms.ModelForm):
    
-
     class Meta:
         model = Post
-        fields = ('image', 'title', 'url', 'description',)
-        
+        fields = ('__all__')
+
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
@@ -44,3 +43,5 @@ class RateForm(forms.ModelForm):
     class Meta:
         model = Rate
         fields = ['design', 'usability', 'content']
+
+   

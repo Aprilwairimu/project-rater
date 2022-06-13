@@ -42,6 +42,6 @@ class UpdateProfileForm(forms.ModelForm):
 class RateForm(forms.ModelForm):
     class Meta:
         model = Rate
-        fields = ['design', 'usability', 'content']
+        fields = ['design', 'Usability', 'content']
 
    

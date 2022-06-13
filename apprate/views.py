@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view 
 from rest_framework.response import Response
 import json
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -25,33 +26,25 @@ def home(request):
     else:
         form = PostForm()
 
-    try:
-        posts = Post.objects.all()
-        posts = posts[::-1]
-        a_post = random.randint(0, len(posts)-1)
-        random_post = posts[a_post]
-        print(random_post.photo)
-    except Post.DoesNotExist:
-        posts = None
-    return render(request, 'home.html', {'posts': posts, 'form': form, 'random_post': random_post})
+    return render(request, 'home.html', { 'form': form,})
 
 def logout(request):
     logout(request)
     return redirect('home')
 
-class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
+# class ProfileViewSet(viewsets.ModelViewSet):
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
 
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+# class PostViewSet(viewsets.ModelViewSet):
+#     queryset = Post.objects.all()
+#     serializer_class = PostSerializer
 
 
 def register(request):

@@ -2,9 +2,10 @@
 {% extends "base.html"%}
 
 {% block content %}
-{%for post in posts%}
+{% for post in posts  %}
 <div class="container" style="margin-top:8%">
-    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }}  <i class="fas fa-heart"></i></span> {{post.date}}</h5>
+    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }}  <i class="fas fa-heart"></i></span> {{post.date}} </h5>
+   
 
     <div class="card">
         <div class="view overlay">
@@ -75,6 +76,11 @@
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{rate_form}}
+                <a href="{{ post.url }}"  class="btn btn-sm btn-success ml-4"> Visit </a>
+                <br>
+                {{post.description}}
+                <br>
+               
                 <button class="btn btn-sm btn-info">Rate</button>
                 <button class="btn btn-sm btn-danger">Delete post</button>
             </form>

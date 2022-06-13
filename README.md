@@ -2,7 +2,7 @@
 
 ## PROJECT PREVIEW
 
-![PROJECT-RATER](./static/images/gram.png)
+![PROJECT-RATER](./static/images/Project-rater.png)
 
 
 ### PROJECT DESCRIPTION

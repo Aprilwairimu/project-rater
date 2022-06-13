@@ -10,4 +10,5 @@ urlpatterns= [
     path('project/<post>', views.project, name='project'),
     path('profile/',views.profile,name='profile'),
     path('search/', views.search_project, name='search'),
+    
 ]

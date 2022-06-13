@@ -2,6 +2,84 @@
 {% extends "base.html"%}
 
 {% block content %}
+<div class="container" style="margin-top:8%">
+    <h5 class="mb-4 mt-4">{{ post.title }} by {{ post.user.username }}  <i class="fas fa-heart"></i></span> {{post.date}}</h5>
+
+    <div class="card">
+        <div class="view overlay">
+            <img class="card-img-top" width="100%"
+                src="{{ post.image.cdn_url }}" alt="{{image.title}}">
+            <a href="">
+                <div class="mask rgba-black-slight">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6 d-flex flex-row mx-auto" style="margin-top:20%">
+                                {% for rate in post.rates.all %}
+                               
+                                <div id="design">{{ rate.design_average}}<br>
+                                    <span class="rates">design</span>
+                                </div>
+                                <div id="usable" class="mx-auto">{{ rate.usability_average }}<br>
+                                    <span class="rates">usability</span>
+                                </div>
+                                <div id="contente">{{ rate.content_average }}<br>
+                                    <span class="rates">content</span>
+                                </div>
+                               
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h3 class="D-block mx-auto">Rates Scores</h3>
+                    {% for rate in post.rates.all %}
+                    
+                    <a class="btn btn-info btn-sm">
+                        <h5>{{ rate.score }}</h5>
+                        <span class="sc">Average Score</span>
+                    </a>
+                    <a class="btn btn-outline-success btn-sm">
+                        <h5>{{ rate.design_average }}</h5>
+                        <span class="sc">Design Average</span>
+                    </a>
+                    <a class="btn btn-outline-primary btn-sm" id="u">
+                        <h5>{{ rate.usability_average }}</h5>
+                        <span class="sc">Usability Average</span>
+                    </a>
+                    <a class="btn btn-outline-danger btn-sm" id="c">
+                        <h5>{{ rate.content_average }}</h5>
+                        <span class="sc">Content Average</span>
+                    </a>
+                   
+                    {% endfor %}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            {% if rate_status %}
+            <h5>You have already voted</h5>
+            {% else %}
+            {% if user.is_authenticated %}
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{rate_form}}
+                <button class="btn btn-sm btn-info">Rate</button>
+            </form>
+            {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
 
 <footer class="py-3 footer">
     <div class="container footer-wrapper">

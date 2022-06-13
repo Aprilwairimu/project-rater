@@ -1,1 +1,1 @@
-web: gunicorn apprate.wsgi --log-file -
+web: gunicorn figure.wsgi --log-file -

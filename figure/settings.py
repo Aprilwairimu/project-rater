@@ -71,7 +71,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apprate',
     'rest_framework',
-    # 'pyuploadcare.dj',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 UPLOADCARE = {
     'pub_key': '2b709bca64245dd9e55e',
@@ -178,5 +179,13 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
 # Whitenoise Settings
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dolh6ghdb',
+    'API_KEY': '374975931497524',
+    'API_SECRET': 'ltvoUIS7w1y9GTS_AO50rSvZdhc'
+}
